@@ -1,0 +1,28 @@
+#edd-gallery-images{
+  overflow: hidden;
+  display: block;
+  margin-top: 10px;
+  .edd-images-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .image-item{
+    height: auto;
+    width: 120px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    img{
+      height: auto;
+      max-width: 100%;
+      vertical-align: middle;
+
+    }
+  }
+
+
+
+
+}
