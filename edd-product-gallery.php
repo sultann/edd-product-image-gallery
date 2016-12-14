@@ -107,11 +107,13 @@ class EDDProductGallery{
 				return;
 			}
 			$images_html = $this->generate_edd_product_gallery($post_id);
+
+			$images_html = $html.$images_html;
+			$html = $images_html;
 		}
 
-		$images_html = $html.$images_html;
 
-		return $images_html;
+		return $html;
 	}
 
 
@@ -157,7 +159,7 @@ class EDDProductGallery{
 			$gallery_id = strtolower(wp_generate_password(5, false));
 			foreach ($image_ids as $image_id){
 				$images_html .= '<a class="image-item swipebox" rel="gallery-'.$gallery_id.'" href="'.wp_get_attachment_image_url($image_id, 'large').'">';
-				$images_html .= wp_get_attachment_image($image_id, array('180', '180'));
+				$images_html .= wp_get_attachment_image($image_id, 'thumbnail');
 				$images_html .= '</a>';
 			}
 			$images_html .= '</div>';
@@ -225,9 +227,15 @@ class EDDProductGallery{
 				margin: 18px 0;
 				padding: 0;
 			}
+			#product_images_container .image:hover ul.actions{
+				display: block;
+			}
 			#product_images_container ul ul.actions li {
 				float: right;
 				margin: 0 0 0 2px
+			}
+			#product_images_container ul.actions li a.delete:hover:before {
+				color: #a00;
 			}
 			#product_images_container ul ul.actions li a {
 				width: 1em;
@@ -238,6 +246,25 @@ class EDDProductGallery{
 			}
 			#product_images_container ul ul.actions li a.tips {
 				cursor: pointer
+			}
+			#product_images_container ul ul.actions li .delete:before {
+				font-family: Dashicons;
+				speak: none;
+				font-weight: 400;
+				font-variant: normal;
+				text-transform: none;
+				line-height: 1;
+				-webkit-font-smoothing: antialiased;
+				margin: 0;
+				text-indent: 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				content: "";
+				color: #999;
 			}
 		</style>
 
