@@ -104,8 +104,10 @@ class EDDProductGallery{
 			$edd_settings = '';
 			$edd_settings = get_post_meta($post_id, '_edd_product_gallery_settings', true);
 			if($edd_settings == 'shortcode'){
-				return;
+				return $html;
 			}
+
+
 			$images_html = $this->generate_edd_product_gallery($post_id);
 
 			$images_html = $html.$images_html;
